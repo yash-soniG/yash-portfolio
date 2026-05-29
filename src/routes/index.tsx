@@ -15,7 +15,7 @@ const RESUME_URL = "https://drive.google.com/file/d/1YBPJxL8aiA1BjAFzCkaomI34Xfv
 const EMAIL = "yashsoni98136@gmail.com";
 const MAILTO = `mailto:${EMAIL}`;
 const LINKEDIN_URL = "https://www.linkedin.com/in/yashsonig";
-const CALENDLY_URL = MAILTO;
+const CALENDLY_URL = "https://calendly.com/yashsoni98136/30min";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -50,7 +50,7 @@ function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <a href={MAILTO} aria-label="Email" className="hidden sm:inline-flex p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors">
+          <a href={MAILTO} aria-label="Email" target="_blank" rel="noreferrer" className="hidden sm:inline-flex p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors">
             <Mail size={18} />
           </a>
           <a href={LINKEDIN_URL} aria-label="LinkedIn" target="_blank" rel="noreferrer" className="hidden sm:inline-flex p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors">
@@ -83,7 +83,7 @@ function Header() {
               </a>
             ))}
             <div className="mt-2 flex items-center gap-3">
-              <a href={MAILTO} aria-label="Email" className="inline-flex items-center justify-center h-11 w-11 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/5"><Mail size={18} /></a>
+              <a href={MAILTO} aria-label="Email" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center h-11 w-11 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/5"><Mail size={18} /></a>
               <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="inline-flex items-center justify-center h-11 w-11 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/5"><Linkedin size={18} /></a>
               <a href={RESUME_URL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-xs font-medium bg-accent-blue text-white px-4 py-2 rounded-full hover:opacity-90">
                 <Download size={14} /> Resume
@@ -186,7 +186,7 @@ function Hero() {
             <a href="#work" className="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full text-sm font-medium hover:opacity-90 transition-opacity">
               See My Work <ArrowDown size={16} />
             </a>
-            <a href={CALENDLY_URL} className="inline-flex items-center gap-2 border border-hairline px-6 py-3 rounded-full text-sm font-medium text-foreground hover:bg-white/5 transition-colors">
+            <a href={CALENDLY_URL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 border border-hairline px-6 py-3 rounded-full text-sm font-medium text-foreground hover:bg-white/5 transition-colors">
               <Calendar size={16} /> Schedule a 10-min Call
             </a>
           </div>
@@ -366,13 +366,13 @@ function Contact() {
           Open to collaborations, freelance projects, and full-time opportunities.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <a href={MAILTO} className="inline-flex items-center gap-2 bg-accent-blue text-white px-6 py-3 rounded-full text-sm font-medium hover:opacity-90 transition-opacity">
+          <a href={MAILTO} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-accent-blue text-white px-6 py-3 rounded-full text-sm font-medium hover:opacity-90 transition-opacity">
             <Mail size={16} /> Email Me
           </a>
           <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 border border-hairline px-6 py-3 rounded-full text-sm font-medium hover:bg-white/5 transition-colors">
             <Linkedin size={16} /> LinkedIn
           </a>
-          <a href={MAILTO} className="inline-flex items-center gap-2 border border-hairline px-6 py-3 rounded-full text-sm font-medium hover:bg-white/5 transition-colors">
+          <a href={CALENDLY_URL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 border border-hairline px-6 py-3 rounded-full text-sm font-medium hover:bg-white/5 transition-colors">
             <Calendar size={16} /> Schedule a Call
           </a>
         </div>
@@ -387,7 +387,7 @@ function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-xs text-muted-foreground">© 2025 Yash Soni. All rights reserved.</p>
         <div className="flex items-center gap-2">
-          <a href={MAILTO} aria-label="Email" className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"><Mail size={16} /></a>
+          <a href={MAILTO} aria-label="Email" target="_blank" rel="noreferrer" className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"><Mail size={16} /></a>
           <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"><Linkedin size={16} /></a>
         </div>
       </div>
