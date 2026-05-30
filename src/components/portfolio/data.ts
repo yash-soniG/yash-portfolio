@@ -106,7 +106,6 @@ const kkRaw: { url: string; title: string; category: string }[] = [
   { url: "https://www.instagram.com/p/DEuPj0nSoBp/", title: "Regions of Maharashtra", category: "Geography" },
 
   // Manufacturing
-  { url: "https://www.instagram.com/p/CratUTtooQy/", title: "Rajasthan's Afeem", category: "Manufacturing" },
   { url: "https://www.instagram.com/p/C0Qe3FASVUO/", title: "Plate from Sugarcane", category: "Manufacturing" },
   { url: "https://www.instagram.com/p/C0vgH-sSL2-/", title: "Tiles from Pollution", category: "Manufacturing" },
   { url: "https://www.instagram.com/p/C44jfCXoRM5/", title: "T-shirts made of Plastic Bottles", category: "Manufacturing" },
@@ -143,7 +142,20 @@ export const kkInstagram: Embed[] = kkRaw.map((r, i) => ({
   featured: featuredUrls.has(r.url),
 }));
 
-export const kkYoutube: Embed[] = [];
+export const kkYoutube: Embed[] = [
+  { id: "kky1", type: "youtube", url: "v_iIQakTjho", title: "What do Indians eat??", category: "10 Million+ Club" },
+  { id: "kky2", type: "youtube", url: "OBFjG9Z3OOE", title: "How was Rajasthan formed??", category: "10 Million+ Club" },
+  { id: "kky3", type: "youtube", url: "49emHp0UipA", title: "Perks of being an IAS!!", category: "10 Million+ Club" },
+  { id: "kky4", type: "youtube", url: "dXotdQX1XjQ", title: "How Indians say Hello", category: "10 Million+ Club" },
+  { id: "kky5", type: "youtube", url: "F2ikz2sIJGI", title: "Potato is not Indian!", category: "10 Million+ Club" },
+  { id: "kky6", type: "youtube", url: "YaLN3ZYE9qc", title: "Fuel from Garbage", category: "10 Million+ Club" },
+  { id: "kky7", type: "youtube", url: "EWbZxQ4auUY", title: "Famous Milk brands of India", category: "10 Million+ Club" },
+  { id: "kky8", type: "youtube", url: "tVAAXX_7ED0", title: "Pillow made of cigarette?", category: "10 Million+ Club" },
+  { id: "kky9", type: "youtube", url: "NSdx_wBbiYE", title: "Water from Tree", category: "10 Million+ Club" },
+  { id: "kky10", type: "youtube", url: "MKLJjAAvEUs", title: "Sohar geet of Bihar", category: "10 Million+ Club" },
+  { id: "kky11", type: "youtube", url: "ahZvjPoKKFg", title: "All maps are Lie!", category: "10 Million+ Club" },
+  { id: "kky12", type: "youtube", url: "9t9ofl8FeeU", title: "India during night", category: "10 Million+ Club" },
+];
 
 // What A Playerr — sourced from the WAP categories sheet.
 const wapFeaturedIg = new Set([
@@ -214,7 +226,7 @@ export const wapYoutube: Embed[] = wapYtRaw.map((r, i) => ({
 
 export const kkCategories = [
   "All", "State Stories", "Science", "Historical", "Human Geography",
-  "Geography", "Manufacturing", "Geopolitics", "Myth Busting", "Problems",
+  "Geography", "Manufacturing", "Geopolitics", "Myth Busting", "Problems", "10 Million+ Club",
 ] as const;
 export const wapCategories = ["All", "Cricket Stories", "Tech in Sports", "Others"] as const;
 

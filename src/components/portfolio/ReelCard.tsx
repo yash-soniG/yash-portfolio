@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Embed } from "./data";
 
 declare global {
@@ -23,13 +23,32 @@ function loadInstagramScript() {
 }
 
 export function ReelCard({ embed }: { embed: Embed }) {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
-    if (embed.type === "instagram") {
-      loadInstagramScript();
-      const t = setTimeout(() => window.instgrm?.Embeds.process(), 300);
-      return () => clearTimeout(t);
-    }
-  }, [embed.type]);
+    if (embed.type !== "instagram") return;
+
+    setLoaded(false);
+    const wrap = wrapRef.current;
+    if (!wrap) return;
+
+    wrap.style.opacity = "0";
+    wrap.style.transition = "none";
+
+    loadInstagramScript();
+
+    const t = setTimeout(() => {
+      window.instgrm?.Embeds.process();
+      setTimeout(() => {
+        wrap.style.transition = "opacity 0.5s ease";
+        wrap.style.opacity = "1";
+        setLoaded(true);
+      }, 400);
+    }, 50);
+
+    return () => clearTimeout(t);
+  }, [embed.url]);
 
   return (
     <div
@@ -46,12 +65,29 @@ export function ReelCard({ embed }: { embed: Embed }) {
             className="absolute inset-0 h-full w-full"
           />
         ) : (
-          <blockquote
-            className="instagram-media absolute inset-0 !m-0 !min-w-0 !w-full !max-w-none"
-            data-instgrm-permalink={embed.url}
-            data-instgrm-version="14"
-            style={{ background: "#000" }}
-          />
+          <div className="absolute inset-0">
+            {!loaded && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                <div className="h-full w-full absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent animate-pulse" />
+                <div className="relative z-10 flex flex-col items-center gap-3 opacity-30">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-white">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+                  </svg>
+                  <span className="text-white text-[10px] uppercase tracking-widest">Loading</span>
+                </div>
+              </div>
+            )}
+            <div ref={wrapRef} className="absolute inset-0" style={{ opacity: 0 }}>
+              <blockquote
+                className="instagram-media absolute inset-0 !m-0 !min-w-0 !w-full !max-w-none"
+                data-instgrm-permalink={embed.url}
+                data-instgrm-version="14"
+                style={{ background: "transparent" }}
+              />
+            </div>
+          </div>
         )}
       </div>
       <div className="p-4 flex items-start justify-between gap-3">

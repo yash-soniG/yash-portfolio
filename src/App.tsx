@@ -76,7 +76,6 @@ function Header() {
   );
 }
 
-
 function Hero() {
   return (
     <section id="top" className="pt-28 pb-20 sm:pt-36 sm:pb-28">
@@ -191,15 +190,15 @@ function Skills() {
         <div className="mt-12 grid sm:grid-cols-2 gap-10">
           {Object.entries(skills).map(([cat, items]) => (
             <div key={cat}>
-  <div className="flex items-center gap-2 pl-3 border-l-2 border-accent-blue">
-    <span className="text-base font-semibold">{cat}</span>
-  </div>
-  <div className="mt-4 flex flex-wrap gap-2">
-    {items.map((s) => (
-      <span key={s} className="text-sm px-4 py-2 rounded-full border border-hairline bg-white/[0.05] text-foreground/90">{s}</span>
-    ))}
-  </div>
-</div>
+              <div className="flex items-center gap-2 pl-3 border-l-2 border-accent-blue">
+                <span className="text-base font-semibold">{cat}</span>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {items.map((s) => (
+                  <span key={s} className="text-sm px-4 py-2 rounded-full border border-hairline bg-white/[0.05] text-foreground/90">{s}</span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -284,12 +283,13 @@ export default function App() {
             <WorkSection
               logo={kkLogo}
               title="KK Create"
-              subtitle="Instagram Lead & Content Strategist"
+              subtitle="Short-Form Lead & Content Strategist"
               description="Wrote 200+ scripts, led the page end-to-end: ideation, scripting, editor coordination, and performance tracking. Scaled from 350K to 1.6M followers and built the YouTube channel to 750K subscribers."
               categories={kkCategories}
               instagram={kkInstagram}
               youtube={kkYoutube}
               youtubeSubs="750K"
+              sectionId="kk-create"
             />
             <div className="h-px bg-hairline" />
             <WorkSection
@@ -302,6 +302,7 @@ export default function App() {
               youtube={wapYoutube}
               youtubeSubs="16.5K"
               stats={[{ label: "Instagram", value: "30.5K" }, { label: "YouTube", value: "16.5K" }, { label: "Built in", value: "3 months" }]}
+              sectionId="what-a-playerr"
             />
           </div>
           <WorkSamples />
