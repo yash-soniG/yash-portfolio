@@ -191,13 +191,15 @@ function Skills() {
         <div className="mt-12 grid sm:grid-cols-2 gap-10">
           {Object.entries(skills).map(([cat, items]) => (
             <div key={cat}>
-              <div className="text-sm text-muted-foreground">{cat}</div>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {items.map((s) => (
-                  <span key={s} className="text-xs px-3 py-1.5 rounded-full border border-hairline bg-white/[0.02]">{s}</span>
-                ))}
-              </div>
-            </div>
+  <div className="flex items-center gap-2 pl-3 border-l-2 border-accent-blue">
+    <span className="text-base font-semibold">{cat}</span>
+  </div>
+  <div className="mt-4 flex flex-wrap gap-2">
+    {items.map((s) => (
+      <span key={s} className="text-sm px-4 py-2 rounded-full border border-hairline bg-white/[0.05] text-foreground/90">{s}</span>
+    ))}
+  </div>
+</div>
           ))}
         </div>
       </div>
