@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Mail, Linkedin, Download, Calendar, ArrowDown, FileText, ClipboardList, Instagram, Youtube, Camera, Pencil, Menu, X } from "lucide-react";
 import kkLogo from "@/assets/kk-create.png";
 import wapLogo from "@/assets/what-a-playerr.png";
@@ -76,50 +76,12 @@ function Header() {
   );
 }
 
-function FloatingComposition() {
-  const wrapRef = useRef<HTMLDivElement | null>(null);
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  useEffect(() => {
-    const el = wrapRef.current;
-    if (!el) return;
-    const handler = (e: MouseEvent) => {
-      const r = el.getBoundingClientRect();
-      const x = (e.clientX - (r.left + r.width / 2)) / r.width;
-      const y = (e.clientY - (r.top + r.height / 2)) / r.height;
-      setMouse({ x, y });
-    };
-    const leave = () => setMouse({ x: 0, y: 0 });
-    el.addEventListener("mousemove", handler);
-    el.addEventListener("mouseleave", leave);
-    return () => {
-      el.removeEventListener("mousemove", handler);
-      el.removeEventListener("mouseleave", leave);
-    };
-  }, []);
-  const Tile = ({ className, gradient, tilt, depth, delay, children }: { className: string; gradient: string; tilt: number; depth: number; delay: string; children: React.ReactNode }) => (
-    <div
-      className={`absolute rounded-2xl shadow-2xl flex items-center justify-center text-white/95 float-tile cursor-pointer ${className}`}
-      style={{ background: gradient, ["--tilt" as any]: `${tilt}deg`, animationDelay: delay, transform: `translate3d(${mouse.x * depth}px, ${mouse.y * depth}px, 0) rotate(${tilt}deg)` }}
-    >
-      {children}
-    </div>
-  );
-  return (
-    <div ref={wrapRef} className="relative h-[360px] sm:h-[480px] w-full" style={{ perspective: "1000px" }}>
-      <div className="absolute inset-0 -z-10 rounded-full blur-3xl opacity-60" style={{ background: "radial-gradient(circle at 60% 50%, rgba(0,113,227,0.35), transparent 60%)" }} />
-      <Tile className="top-2 left-[18%] h-20 w-20 sm:h-24 sm:w-24" gradient="linear-gradient(135deg,#7a1f3d,#3d0f1f)" tilt={-8} depth={28} delay="0s"><Instagram size={32} /></Tile>
-      <Tile className="top-[30%] right-[8%] h-20 w-20 sm:h-24 sm:w-24" gradient="linear-gradient(135deg,#7a1f1f,#3d0f0f)" tilt={8} depth={-22} delay="0.4s"><Youtube size={32} /></Tile>
-      <Tile className="top-[52%] left-[8%] h-20 w-20 sm:h-24 sm:w-24" gradient="linear-gradient(135deg,#1f4a7a,#0f243d)" tilt={-6} depth={18} delay="0.8s"><Camera size={30} /></Tile>
-      <Tile className="bottom-2 right-[20%] h-20 w-20 sm:h-24 sm:w-24" gradient="linear-gradient(135deg,#1f5a3a,#0f2d1d)" tilt={6} depth={-30} delay="1.2s"><Pencil size={28} /></Tile>
-    </div>
-  );
-}
 
 function Hero() {
   return (
     <section id="top" className="pt-28 pb-20 sm:pt-36 sm:pb-28">
-      <div className="mx-auto max-w-6xl px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div>
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="max-w-3xl">
           <span className="inline-flex items-center gap-2 text-xs px-4 py-1.5 rounded-full border border-hairline text-foreground/80">
             <span className="h-1.5 w-1.5 rounded-full bg-accent-blue" />
             Open to: Freelance · Full-Time · Collaborations
@@ -147,7 +109,6 @@ function Hero() {
             </a>
           </div>
         </div>
-        <div className="mt-4 lg:mt-0"><FloatingComposition /></div>
       </div>
     </section>
   );
