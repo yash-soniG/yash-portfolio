@@ -42,7 +42,7 @@ export function WorkSection({
         />
         <div>
           <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">{title}</h3>
-          <p className="text-sm text-muted-foreground">{subtitle}</p>
+          <p className="text-sm text-accent-blue">{subtitle}</p>
         </div>
       </div>
       <p className="mt-5 max-w-2xl text-muted-foreground leading-relaxed">{description}</p>

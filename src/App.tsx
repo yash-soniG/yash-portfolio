@@ -221,7 +221,10 @@ function Testimonials() {
                 ) : (
                   <div className="h-12 w-12 sm:h-[60px] sm:w-[60px] rounded-full bg-gradient-to-br from-accent-blue to-accent-blue/40 flex items-center justify-center text-sm font-semibold text-white">{t.initials}</div>
                 )}
-                <div className="flex-1"><div className="text-sm font-medium">{t.name}</div></div>
+                <div className="flex-1">
+                  <div className="text-sm font-medium">{t.name}</div>
+                  <div className="text-xs text-foreground/80 mt-0.5 italic">{t.designation}</div>
+                </div>
               </div>
               <p className="mt-5 text-base sm:text-lg leading-relaxed text-foreground/90">"{t.quote}"</p>
               <span className="absolute bottom-4 right-4 text-muted-foreground group-hover:text-accent-blue transition-colors"><Linkedin size={18} /></span>
