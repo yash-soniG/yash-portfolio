@@ -1,31 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import type { Embed } from "./data";
 
 declare global {
   interface Window {
     instgrm?: { Embeds: { process: () => void } };
   }
-}
-
-function useInView<T extends HTMLElement>() {
-  const ref = useRef<T | null>(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          obs.disconnect();
-        }
-      },
-      { rootMargin: "200px" }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-  return { ref, inView };
 }
 
 function loadInstagramScript() {
@@ -44,43 +23,35 @@ function loadInstagramScript() {
 }
 
 export function ReelCard({ embed }: { embed: Embed }) {
-  const { ref, inView } = useInView<HTMLDivElement>();
-
   useEffect(() => {
-    if (inView && embed.type === "instagram") {
+    if (embed.type === "instagram") {
       loadInstagramScript();
       const t = setTimeout(() => window.instgrm?.Embeds.process(), 300);
       return () => clearTimeout(t);
     }
-  }, [inView, embed.type]);
+  }, [embed.type]);
 
   return (
     <div
-      ref={ref}
       className="group rounded-2xl border overflow-hidden flex flex-col"
       style={{ backgroundColor: "#0a0a0a", borderColor: "#222222" }}
     >
       <div className="relative w-full bg-black aspect-[9/16] overflow-hidden">
-        {inView ? (
-          embed.type === "youtube" ? (
-            <iframe
-              src={`https://www.youtube.com/embed/${embed.url}`}
-              title="YouTube short"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute inset-0 h-full w-full"
-            />
-          ) : (
-            <blockquote
-              className="instagram-media absolute inset-0 !m-0 !min-w-0 !w-full !max-w-none"
-              data-instgrm-permalink={embed.url}
-              data-instgrm-version="14"
-              style={{ background: "#000" }}
-            />
-          )
+        {embed.type === "youtube" ? (
+          <iframe
+            src={`https://www.youtube.com/embed/${embed.url}`}
+            title="YouTube short"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full"
+          />
         ) : (
-          <div className="absolute inset-0 animate-pulse bg-white/[0.04]" />
+          <blockquote
+            className="instagram-media absolute inset-0 !m-0 !min-w-0 !w-full !max-w-none"
+            data-instgrm-permalink={embed.url}
+            data-instgrm-version="14"
+            style={{ background: "#000" }}
+          />
         )}
       </div>
       <div className="p-4 flex items-start justify-between gap-3">
