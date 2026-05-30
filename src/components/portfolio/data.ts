@@ -231,7 +231,7 @@ export const testimonials = [
     initials: "KK",
     image: kavyaImg,
     quote:
-      "I hired Yash based on his: 🗣️ Honesty: He was upfront about how many hours he can commit in a day. 🤹‍♂️ Hustle: He was willing to work two part-time jobs while also attending college. ✍️ Homework: He had studied my work extensively and knew exactly what I wanted. 🙇‍♂️ Humility: He was willing to work for free, for the sheer joy of learning.",
+      "I hired Yash based on his; Honesty: He was upfront about how many hours he can commit in a day. Hustle: He was willing to work two part-time jobs while also attending college. Homework: He had studied my work extensively and knew exactly what I wanted. Humility: He was willing to work for free, for the sheer joy of learning.",
     linkedin:
       "https://www.linkedin.com/feed/update/urn:li:activity:7265726565571846145/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEIgPccBMnCZd4P4ZjRZPThBnfDC2hdvGR4",
   },
@@ -240,7 +240,7 @@ export const testimonials = [
     image: sushovitaImg,
     name: "Sushovita Das",
     quote:
-      "Yash showed me how to write scripts which hit millions of views. No question was too silly for him—he had my back!",
+      "Yash showed me how to write scripts which hit millions of views. No question was too silly for him, he had my back!",
     linkedin:
       "https://www.linkedin.com/feed/update/urn:li:activity:7259226872448786434/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEIgPccBMnCZd4P4ZjRZPThBnfDC2hdvGR4",
   },
