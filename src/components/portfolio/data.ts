@@ -226,7 +226,7 @@ export const wapYoutube: Embed[] = wapYtRaw.map((r, i) => ({
 
 export const kkCategories = [
   "All", "State Stories", "Science", "Historical", "Human Geography",
-  "Geography", "Manufacturing", "Geopolitics", "Myth Busting", "Problems", "10 Million+ Club",
+  "Geography", "Manufacturing", "Geopolitics", "Myth Busting", "Problems",
 ] as const;
 export const wapCategories = ["All", "Cricket Stories", "Tech in Sports", "Others"] as const;
 

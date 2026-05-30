@@ -25,6 +25,13 @@ export function WorkSection({
 
   const source = platform === "instagram" ? instagram : youtube;
 
+  const activeCategories = useMemo(() => {
+    if (platform === "youtube") {
+      return [...new Set(youtube.map((e) => e.category))];
+    }
+    return categories;
+  }, [platform, youtube, categories]);
+
   const filtered = useMemo(() => {
     if (category !== "All") return source.filter((e) => e.category === category);
     const byCategory: Record<string, Embed[]> = {};
@@ -58,7 +65,12 @@ export function WorkSection({
 
   function handlePlatformChange(p: "instagram" | "youtube") {
     setPlatform(p);
-    setCategory("All");
+    if (p === "youtube") {
+      const firstYtCat = [...new Set(youtube.map((e) => e.category))][0];
+      setCategory(firstYtCat ?? "All");
+    } else {
+      setCategory("All");
+    }
     setVisibleCount(3);
   }
 
@@ -107,7 +119,7 @@ export function WorkSection({
       </div>
 
       <div className="mt-5 flex flex-wrap gap-2">
-        {categories.map((c) => (
+        {activeCategories.map((c) => (
           <button
             key={c}
             onClick={() => handleCategoryChange(c)}
